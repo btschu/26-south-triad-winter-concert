@@ -1,0 +1,1165 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+:root {
+  /* fonts */
+  --primary-title-font: "Kaushan Script", "Playfair Display", serif;
+  --secondary-title-font: "Caveat", "Playfair Display", serif;
+  --default-font: "Poppins", sans-serif;
+  /* colors */
+  --primary-color: #f7e93b;
+  --black-color: #000000;
+  --gray-color: #2c3034;
+  --white-color: #ffffff;
+}
+
+body {
+  font-family: var(--default-font);
+  background: var(--black-color);
+  color: var(--white-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: var(--gray-color);
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid var(--gray-color);
+  border-top-color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+  border: 2px solid var(--primary-color);
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: var(--primary-color);
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: var(--primary-color);
+  color: var(--gray-color);
+}
+
+.back-to-top:hover i {
+  color: var(--gray-color);
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  background: rgba(12, 11, 9, 0.6);
+  border-bottom: 1px solid rgba(12, 11, 9, 0.6);
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 15px 0;
+}
+
+#header.header-scrolled {
+  top: 0;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid #37332a;
+}
+
+#header .logo {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-family: var(--primary-title-font);
+}
+
+#header .logo span {
+  color: var(--primary-color);
+}
+
+#header .logo a {
+  color: var(--white-color);
+}
+
+#header .logo img {
+  max-height: 40px;
+}
+
+/* Print button in the top bar: a small outlined pill (just the icon on narrow phones) */
+#header .header-print {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 14px 0 0;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--white-color);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+#header .header-print .bi {
+  font-size: 15px;
+}
+
+#header .header-print:hover,
+#header .header-print:focus-visible {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+@media (min-width: 992px) {
+  #header .header-print {
+    margin: 0 0 0 12px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation program
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
+.navbar {
+  padding: 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  color: var(--white-color);
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+  color: var(--primary-color);
+}
+
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 14px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: var(--white-color);
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  color: var(--gray-color);
+}
+
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover>a {
+  color: var(--primary-color);
+}
+
+.navbar .dropdown:hover>ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+
+.navbar .dropdown .dropdown:hover>ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+/**
+* Mobile Navigation 
+*/
+.mobile-nav-toggle {
+  color: var(--white-color);
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  transition: 0.5s;
+}
+
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    display: none;
+  }
+}
+
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.navbar-mobile .mobile-nav-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  padding: 10px 0;
+  border-radius: 6px;
+  background-color: var(--gray-color);
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: var(--white-color);
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover>a {
+  color: var(--primary-color);
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+  margin: 15px;
+}
+
+.navbar-mobile .dropdown ul {
+  position: static;
+  display: none;
+  margin: 10px 20px;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background: var(--white-color);
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+}
+
+.navbar-mobile .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar-mobile .dropdown ul a {
+  padding: 10px 20px;
+}
+
+.navbar-mobile .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar-mobile .dropdown ul a:hover,
+.navbar-mobile .dropdown ul .active:hover,
+.navbar-mobile .dropdown ul li:hover>a {
+  color: var(--primary-color);
+}
+
+.navbar-mobile .dropdown>.dropdown-active {
+  display: block;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  min-height: 100svh;
+  background: url("../img/hero-bg.jpg") bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  /* background-color: #f7e93b; */
+  padding: 100px 0; /* leaves room for the fixed header, so tall content isn't clipped */
+}
+
+/* Keep the top of the page hidden until the real content is in, so the template's placeholder
+   text never flashes. render.js adds "data-ready" to the page when it's done. */
+body:not(.data-ready) #hero .container,
+body:not(.data-ready) #header .logo {
+  visibility: hidden;
+}
+
+#hero:before {
+  content: "";
+  /* how dark the photo is; set by "Background Dimming" in the spreadsheet (default 0.5) */
+  background: rgba(0, 0, 0, var(--hero-dim, 0.5));
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* soft dark shadow so hero text stays readable over busy photos */
+#hero h1,
+#hero h2,
+#hero h3 {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+#hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+#hero img {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  filter: invert(98%) sepia(30%) saturate(38%) hue-rotate(327deg) brightness(105%) contrast(94%);
+  z-index: 996;
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: 60px;
+  font-weight: 1000;
+  line-height: 56px;
+  color: var(--white-color);
+  font-family: var(--primary-title-font);
+}
+
+/* Big Title Line 1: small, light, letter-spaced capitals above the large script Line 2 */
+#hero h1 #concert-school-name {
+  display: block; /* so the small line-height applies, even when a long name wraps */
+  margin-bottom: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  padding-left: 0.28em; /* balances the spacing after the last letter so it stays centered */
+}
+
+/* Big Title Line 2 (the concert name) carries the primary color */
+#hero #concert-name {
+  display: block;
+  color: var(--primary-color);
+}
+
+#hero h2 span {
+  color: var(--primary-color);
+}
+
+#hero h2 {
+  color: var(--white-color);
+  margin-bottom: 10px 0 0 0;
+  font-size: 22px;
+}
+
+#hero h3 {
+  font-family: var(--secondary-title-font);
+  color: var(--white-color);
+  margin-bottom: 10px 0 0 0;
+  font-size: 22px;
+}
+
+#hero .btns {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+#hero .btn-program,
+#hero .btn-book {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: 0.3s;
+  line-height: 1;
+  color: var(--white-color);
+  border: 2px solid var(--primary-color);
+}
+
+#hero .btn-program:hover,
+#hero .btn-book:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+#hero .btn-book {
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-height: 500px) {
+  #hero {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 38px;
+    line-height: 36px;
+  }
+  
+  #hero h1 #concert-school-name {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 1.1rem;
+  }
+
+  #hero h2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  #hero img {
+    left: 8px;
+    bottom: 14px;
+    width: 100px
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: var(--gray-color);
+}
+
+.section-title {
+  padding-bottom: 40px;
+}
+
+.section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 46px;
+  font-weight: 700;
+  font-family: var(--primary-title-font);
+  color: var(--primary-color);
+}
+
+/*--------------------------------------------------------------
+# Students Section
+--------------------------------------------------------------*/
+#students h4 {
+  color: var(--primary-color); 
+  font-size: 24px;
+  /* text-decoration: underline; */
+  font-family: var(--secondary-title-font);
+}
+
+/* find a student by name */
+#students-search {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 18px;
+  padding: 10px 18px;
+  font-family: var(--default-font);
+  font-size: 15px;
+  color: var(--white-color);
+  background: rgba(12, 11, 9, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+}
+
+#students-search::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#students-search:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* a name found by the search: highlighted in the primary color, the rest of its group stays visible */
+.students .box li.student-match {
+  margin: 1px auto;
+  padding: 1px 10px;
+  width: fit-content;
+  font-weight: 600;
+  color: var(--white-color);
+  background: rgba(255, 255, 255, 0.14);
+  outline: 2px solid var(--primary-color);
+  border-radius: 6px;
+}
+
+@supports (background: color-mix(in srgb, red 50%, transparent)) {
+  .students .box li.student-match {
+    background: color-mix(in srgb, var(--primary-color) 38%, transparent);
+  }
+}
+
+.students #students-filters {
+  padding: 0;
+  margin: 0 auto 0 auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.students ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.students #students-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 10px;
+  transition: all ease-in-out 0.3s;
+  border-radius: 5px;
+  font-family: var(--default-font);
+}
+
+.students #students-filters li:hover,
+.students #students-filters li.filter-active-students {
+  color: var(--primary-color);
+}
+
+.students #students-filters li:last-child {
+  margin-right: 0;
+}
+
+.students .box {
+  padding: 20px;
+  text-align: center;
+  background-color: #22252a;
+  border-radius: 9px;
+  margin: 15px 5px;
+  /* box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45) !important; */
+  transition: all ease-in-out 0.3s;
+}
+
+.students .box span {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-family: var(--primary-title-font);
+}
+
+.students .box h4 {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.students .box p {
+  color: #aaaaaa;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Program Section
+--------------------------------------------------------------*/
+#program {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#program h2 span {
+  color: var(--primary-color);
+  font-family: var(--secondary-title-font);
+}
+
+.program .program-item {
+  margin-bottom: 25px;
+}
+
+.table {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* soloists */
+.table ul {
+  margin-bottom: 0;
+  font-style: italic;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  /* list-style: none; */
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* movements of a longer piece: numbered lines under the title, not italic like the soloists */
+.table ul.movements {
+  list-style: none;
+  padding-left: 14px;
+  margin-top: 4px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* soloists listed after movements need a little room */
+.table ul.movements + ul {
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+  #program {
+    width: 100%;
+  }
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+#footer {
+  /* background: var(--black-color); */
+  border-top: 1px solid #37332a;
+  padding: 60px 20px 130px 20px;
+  line-height: 1;
+}
+
+#footer h3 {
+  font-family: var(--secondary-title-font);
+  font-size: 44px;
+}
+
+#logo img{
+  height: 150px;
+  border-radius: 16px;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* the "Program created by" name uses the primary color */
+#footer .copyright span {
+  color: var(--primary-color);
+}
+
+/* the closing message sits in a thin primary-color frame that hugs the text */
+#footer #closing-statement {
+  width: fit-content;
+  max-width: calc(100% - 24px);
+  margin: 0 auto 20px;
+  padding: 22px 36px;
+  line-height: 1.2;
+  border: 2px solid var(--primary-color);
+  border-radius: 14px;
+}
+
+/* the "Thank You" heading matches the other section titles (Program, Students) */
+#footer #thank-you-heading {
+  color: var(--primary-color);
+}
+
+#sticky-footer {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  z-index: 50;
+  background: rgba(12, 11, 9, 0.6);
+  border-top: 1px solid rgba(12, 11, 9, 0.6);
+}
+
+/*--------------------------------------------------------------
+# Keyboard focus (group filter buttons, bio buttons)
+--------------------------------------------------------------*/
+#students-filters li:focus-visible,
+.bio-btn:focus-visible,
+.bio-close:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/*--------------------------------------------------------------
+# Director bio pop-up
+--------------------------------------------------------------*/
+#bio-dialog {
+  width: calc(100% - 32px);
+  max-width: 640px;
+  max-height: 86vh;
+  padding: 0;
+  overflow: auto;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  background: #1b1d21;
+  color: var(--white-color);
+}
+
+#bio-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.bio-dialog-inner {
+  position: relative;
+  padding: 28px 24px 24px;
+  text-align: left;
+}
+
+.bio-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: none;
+  color: var(--white-color);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.bio-photo {
+  display: block;
+  margin: 0 auto 16px;
+  max-width: 220px;
+  width: 60%;
+  border-radius: 12px;
+}
+
+#bio-dialog h3 {
+  margin: 0;
+  text-align: center;
+  font-family: var(--primary-title-font);
+  color: var(--primary-color);
+}
+
+.bio-group {
+  margin: 2px 0 16px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+#bio-dialog-text p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/*--------------------------------------------------------------
+# Printing
+# The page prints a separate document, #print-doc, that render.js builds as four pages (title and
+# concert info, program, students, thank-yous). The screen layout is hidden when printing. Everything
+# is plain black on white. All sizes are multiplied by --ps; phones lay the page out at their narrow
+# screen width and then enlarge it to fit the paper, so --ps is halved there to print the same size.
+--------------------------------------------------------------*/
+#print-doc {
+  display: none;
+}
+
+@page {
+  margin: 0.45in;
+}
+
+@media print {
+  :root {
+    --ps: 1;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    margin: 0;
+  }
+
+  body > *:not(#print-doc) {
+    display: none !important;
+  }
+
+  #print-doc {
+    display: block;
+    color: #000;
+    background: #fff;
+    font-family: var(--default-font);
+    line-height: 1.25;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  #print-doc * {
+    color: #000;
+    box-sizing: border-box;
+  }
+
+  /* (the site's own `section` styles add padding and hide overflow, so undo them here) */
+  .pd-page {
+    padding: 0;
+    overflow: visible;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .pd-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* page 1: title, concert info, directors */
+  .pd-title-page {
+    padding-top: calc(0.9in * var(--ps));
+    text-align: center;
+  }
+
+  .pd-kicker {
+    margin: 0 0 calc(10pt * var(--ps));
+    font-size: calc(14pt * var(--ps));
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .pd-title {
+    margin: 0 0 calc(18pt * var(--ps));
+    padding-bottom: calc(14pt * var(--ps));
+    border-bottom: 1px solid #000;
+    font-family: var(--primary-title-font);
+    font-size: calc(44pt * var(--ps));
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .pd-when,
+  .pd-names {
+    font-size: calc(15pt * var(--ps));
+    line-height: 1.5;
+  }
+
+  .pd-heading {
+    margin: calc(26pt * var(--ps)) 0 calc(4pt * var(--ps));
+    font-family: var(--default-font);
+    font-size: calc(15pt * var(--ps));
+    font-weight: 400;
+    text-decoration: underline;
+  }
+
+  /* pages 2 and 3: lists in balanced columns */
+  .pd-section {
+    margin: 0 0 calc(6pt * var(--ps));
+    font-family: var(--primary-title-font);
+    font-size: calc(24pt * var(--ps));
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .pd-cols {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(22pt * var(--ps));
+  }
+
+  .pd-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .pd-students .pd-cols {
+    gap: calc(12pt * var(--ps));
+  }
+
+  /* program */
+  .pp-group {
+    margin: calc(8pt * var(--ps)) 0 calc(3pt * var(--ps));
+    text-align: center;
+  }
+
+  .pp-group h3,
+  .pp-continued {
+    margin: 0;
+    font-family: var(--secondary-title-font);
+    font-size: calc(15pt * var(--ps));
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .pp-continued {
+    margin: calc(8pt * var(--ps)) 0 calc(3pt * var(--ps));
+    text-align: center;
+    font-size: calc(12pt * var(--ps));
+  }
+
+  .pp-directors {
+    margin: calc(2pt * var(--ps)) 0 0;
+    font-size: calc(10pt * var(--ps));
+  }
+
+  .pp-song {
+    margin: 0 0 calc(3pt * var(--ps));
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pp-head {
+    display: flex;
+    justify-content: space-between;
+    gap: calc(8pt * var(--ps));
+    font-size: calc(9.5pt * var(--ps));
+  }
+
+  .pp-composer {
+    flex: none;
+    max-width: 40%;
+    text-align: right;
+  }
+
+  .pp-movement,
+  .pp-info {
+    padding-left: calc(10pt * var(--ps));
+    font-size: calc(8.5pt * var(--ps));
+  }
+
+  .pp-info {
+    font-style: italic;
+  }
+
+  /* students */
+  .ps-group,
+  .ps-continued {
+    margin: calc(8pt * var(--ps)) 0 calc(3pt * var(--ps));
+    padding-bottom: calc(1pt * var(--ps));
+    border-bottom: 1px solid #000;
+    font-family: var(--primary-title-font);
+    font-size: calc(12pt * var(--ps));
+    text-align: center;
+  }
+
+  .ps-continued {
+    border-bottom: 0;
+    font-size: calc(10pt * var(--ps));
+  }
+
+  .ps-block {
+    text-align: center;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .ps-block h4 {
+    margin: calc(3pt * var(--ps)) 0 calc(1pt * var(--ps));
+    font-family: var(--secondary-title-font);
+    font-size: calc(10.5pt * var(--ps));
+    font-weight: 400;
+  }
+
+  .ps-block ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: calc(9pt * var(--ps));
+    line-height: 1.15;
+  }
+
+  /* page 4: thank-yous and closing message */
+  .pd-closing-page {
+    padding-top: calc(1in * var(--ps));
+    text-align: center;
+  }
+
+  .pd-thanks-heading {
+    margin: 0 0 calc(8pt * var(--ps));
+    font-family: var(--primary-title-font);
+    font-size: calc(26pt * var(--ps));
+    font-weight: 400;
+  }
+
+  .pd-thanks {
+    margin-bottom: calc(26pt * var(--ps));
+    font-size: calc(12pt * var(--ps));
+    line-height: 1.6;
+  }
+
+  .pd-closing {
+    display: block;
+    width: fit-content;
+    max-width: 90%;
+    margin: 0 auto calc(20pt * var(--ps));
+    padding: calc(16pt * var(--ps)) calc(28pt * var(--ps));
+    border: 2px solid #000;
+    border-radius: calc(12pt * var(--ps));
+    font-family: var(--secondary-title-font);
+    font-size: calc(30pt * var(--ps));
+    line-height: 1.2;
+  }
+
+  .pd-credit {
+    font-size: calc(10pt * var(--ps));
+  }
+}
+
+/* Printing from a phone: the page is laid out at the phone's narrow width (about 390px) and then
+   enlarged about 2x to fit the paper, so everything is half size to come out the same on paper. */
+@media print and (max-width: 600px) {
+  :root {
+    --ps: 0.5;
+  }
+}
